@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Founder's Day 2025 Invitation - Elegant Edition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary-font: 'Cinzel', serif;
+      --secondary-font: 'Playfair Display', serif;
+      --text-color: #333333;
+      --accent-color: #b8860b;
+      --light-bg: #f8f8f8;
+      --gradient-start: rgba(255, 250, 240, 0.8);
+      --gradient-end: rgba(240, 248, 255, 0.8);
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--light-bg);
+      font-family: var(--secondary-font);
+      color: var(--text-color);
+    }
+
+    .invitation-container {
+      position: relative;
+      width: 100vmin;
+      height: calc(100vmin * 16 / 9);
+      max-width: 450px;
+      max-height: 800px;
+      overflow: hidden;
+      background: url('BG!.png') no-repeat center center;
+      background-size: cover;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .particle-container {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .scene {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 3;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .scene.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes zoomOut {
+      from { transform: scale(1.05); opacity: 1; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes shimmeringBorder {
+      0% { box-shadow: 0 0 2px var(--accent-color); }
+      50% { box-shadow: 0 0 10px var(--accent-color), 0 0 15px rgba(255,255,255,0.5); }
+      100% { box-shadow: 0 0 2px var(--accent-color); }
+    }
+
+    @keyframes gentleShimmer {
+      0% { filter: drop-shadow(0 0 2px var(--accent-color)); }
+      50% { filter: drop-shadow(0 0 8px var(--accent-color)); }
+      100% { filter: drop-shadow(0 0 2px var(--accent-color)); }
+    }
+
+    @keyframes etherealFloat {
+      0% { transform: translateY(-100%) translateX(0); opacity: 0; }
+      50% { opacity: 0.6; }
+      100% { transform: translateY(100%) translateX(20px); opacity: 0; }
+    }
+
+    .school-logo {
+      width: 150px;
+      height: auto;
+      animation: zoomIn 1s forwards, gentleShimmer 2.5s infinite alternate;
+      margin-bottom: 20px;
+    }
+
+    .school-name {
+      font-family: var(--primary-font);
+      font-size: 2.5em;
+      color: var(--accent-color);
+      margin-bottom: 10px;
+      animation: fadeIn 1.5s forwards;
+      animation-delay: 0.5s;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    }
+
+    .invitation-line {
+      font-family: var(--secondary-font);
+      font-size: 1.2em;
+      color: var(--text-color);
+      animation: slideUp 1.5s forwards;
+      animation-delay: 1s;
+    }
+
+    .founder-photo-frame {
+      border: 2px solid var(--accent-color);
+      border-radius: 10px;
+      padding: 10px;
+      animation: shimmeringBorder 3s infinite;
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .founder-photo {
+    width: 220px; /* increased from 180px */
+    height: 220px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+    .founder-message {
+      font-family: var(--secondary-font);
+      font-size: 1.1em;
+      font-style: italic;
+      color: var(--text-color);
+      animation: fadeIn 1.5s forwards;
+      animation-delay: 0.5s;
+      max-width: 80%;
+    }
+
+    .event-detail {
+      font-family: var(--secondary-font);
+      font-size: 1.3em;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-color);
+      animation: slideUp 1.5s forwards;
+      opacity: 0;
+    }
+
+    .event-detail .icon {
+      font-size: 1.5em;
+      color: var(--accent-color);
+      animation: gentleShimmer 1.5s infinite alternate;
+    }
+
+    .closing-message {
+      font-family: var(--primary-font);
+      font-size: 1.5em;
+      color: var(--accent-color);
+      margin-bottom: 15px;
+      animation: zoomOut 2s forwards;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+    }
+
+    .signature {
+      font-family: var(--secondary-font);
+      font-size: 1.1em;
+      font-style: italic;
+      color: var(--text-color);
+      animation: fadeIn 2s forwards;
+      animation-delay: 0.5s;
+    }
+
+    .particle {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 10px rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      animation: etherealFloat 7s linear infinite;
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="invitation-container">
+    <div class="particle-container"></div>
+
+    <div class="scene active" id="scene1">
+      <img src="logo3.png" alt="School Logo" class="school-logo">
+      <h1 class="school-name">Moti Boman Burjor Irani Educational Academy</h1>
+      <p class="invitation-line">Invites you to celebrate</p>
+    </div>
+
+    <div class="scene" id="scene2">
+      <div class="founder-photo-frame">
+        <img src="Founder .jpg" alt="Founder's Photo" class="founder-photo">
+      </div>
+      <p>Late Mrs. Moti Boman Burjor Irani</p>
+      <p class="founder-message">""A founder’s dream is not just the beginning of an institution, but the seed of countless futures. On this day, we honour the vision, values, and tireless spirit that laid the foundation for generations to rise and shine."
+
+"</p>
+    </div>
+
+    <div class="scene" id="scene3">
+      <p class="event-detail" style="animation-delay: 0s;"><span class="icon">📅</span> 28th July,2025</p>
+      <p class="event-detail" style="animation-delay: 1s;"><span class="icon">🕒</span> 8:00 AM Onwards</p>
+      <p class="event-detail" style="animation-delay: 2s;"><span class="icon">📍</span>Moti Boman Burjor Irani 
+        Educational Academy </p>
+    </div>
+
+    <div class="scene" id="scene4">
+      <p class="closing-message">Join us in honoring our founder's legacy.</p>
+      <p class="signature">The Management & Staff</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const scenes = document.querySelectorAll('.scene');
+      let currentSceneIndex = 0;
+      const transitionTime = 7500;
+      const particleContainer = document.querySelector('.particle-container');
+
+      function showScene(index) {
+        scenes.forEach((scene, i) => {
+          if (i === index) {
+            scene.classList.add('active');
+            scene.querySelectorAll('h1, p, img, .founder-photo-frame').forEach(el => {
+              el.style.animation = 'none';
+              void el.offsetWidth;
+              if (scene.id === 'scene1') {
+                if (el.classList.contains('school-logo')) el.style.animation = 'zoomIn 1s forwards, gentleShimmer 2.5s infinite alternate';
+                if (el.classList.contains('school-name')) el.style.animation = 'fadeIn 1.5s forwards 0.5s';
+                if (el.classList.contains('invitation-line')) el.style.animation = 'slideUp 1.5s forwards 1s';
+              } else if (scene.id === 'scene2') {
+                if (el.classList.contains('founder-photo-frame')) el.style.animation = 'shimmeringBorder 3s infinite';
+                if (el.classList.contains('founder-message')) el.style.animation = 'fadeIn 1.5s forwards 0.5s';
+              } else if (scene.id === 'scene3') {
+                if (el.classList.contains('event-detail')) {
+                  const delay = el.style.animationDelay || '0s';
+                  el.style.animation = 'none';
+                  void el.offsetWidth;
+                  el.style.animation = `slideUp 1.5s forwards ${delay}`;
+                }
+              } else if (scene.id === 'scene4') {
+                if (el.classList.contains('closing-message')) el.style.animation = 'zoomOut 2s forwards';
+                if (el.classList.contains('signature')) el.style.animation = 'fadeIn 2s forwards 0.5s';
+              }
+            });
+          } else {
+            scene.classList.remove('active');
+          }
+        });
+      }
+
+      function nextScene() {
+        currentSceneIndex = (currentSceneIndex + 1) % scenes.length;
+        showScene(currentSceneIndex);
+      }
+
+      showScene(currentSceneIndex);
+      setInterval(nextScene, transitionTime);
+
+      function createParticle() {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particleContainer.appendChild(particle);
+
+        const size = Math.random() * 4 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.animationDuration = `${Math.random() * 4 + 5}s`;
+        particle.style.opacity = Math.random() * 0.5 + 0.2;
+        particle.style.animationDelay = `${Math.random() * 6}s`;
+
+        particle.addEventListener('animationend', () => particle.remove());
+      }
+
+      setInterval(createParticle, 250);
+    });
+  </script>
+</body>
+</html>
